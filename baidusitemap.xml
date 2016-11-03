@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
+    <lastmod>2016-11-03T10:01:55.458Z</lastmod>
+    <data>
+        <display>
+        <title>Google官方MVP框架源码解读</title>
+        <pubTime>2016-11-03T07:54:41.000Z</pubTime>
+        
+        <tag>MVP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://songning.me/2016/10/29/singleton-pattern/</loc>
+    <lastmod>2016-10-30T07:11:25.782Z</lastmod>
+    <data>
+        <display>
+        <title>Java设计模式 - 单例模式</title>
+        <pubTime>2016-10-29T09:19:04.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://songning.me/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
+    <lastmod>2016-10-29T03:37:16.520Z</lastmod>
+    <data>
+        <display>
+        <title>Activity的四种启动模式</title>
+        <pubTime>2016-10-28T13:06:30.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>面试</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://songning.me/2016/10/27/first/</loc>
+    <lastmod>2016-10-27T13:43:09.284Z</lastmod>
+    <data>
+        <display>
+        <title>第一章</title>
+        <pubTime>2016-10-27T12:21:04.000Z</pubTime>
+        
+        <tag>随想</tag>
+         
+        <tag>第一篇</tag>
+         
+         
+           
+             
+              <breadCrumb title="随想" url="http://songning.me/categories/%E9%9A%8F%E6%83%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://songning.me/2016/10/26/hello-world/</loc>
+    <lastmod>2016-10-27T12:35:58.214Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2016-10-26T09:49:30.311Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+</urlset>
