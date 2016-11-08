@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://songning.me/2016/11/08/android-adb-command/</loc>
+    
+    <lastmod>2016-11-08T10:05:41.827Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
     
     <lastmod>2016-11-05T06:17:56.640Z</lastmod>

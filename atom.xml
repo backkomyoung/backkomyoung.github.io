@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songning.me/"/>
-  <updated>2016-11-05T06:17:56.640Z</updated>
+  <updated>2016-11-08T10:05:41.827Z</updated>
   <id>http://songning.me/</id>
   
   <author>
@@ -14,6 +14,125 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android常用的adb命令</title>
+    <link href="http://songning.me/2016/11/08/android-adb-command/"/>
+    <id>http://songning.me/2016/11/08/android-adb-command/</id>
+    <published>2016-11-08T09:30:47.000Z</published>
+    <updated>2016-11-08T10:05:41.827Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>作为一个Android开发人员，了解常用的adb命令是很必要的。在使用adb命令前，我们先看一下环境有没有配置好。win+R输入cmd打开命令行工具输入adb，如果显示是这样：<br><a id="more"></a><br><img src="http://ofp4swv4i.bkt.clouddn.com/android-adb-command-succeed.png" alt="adb_succeed"></p>
+<p>那么恭喜你，你的adb环境已经搭建好。</p>
+<p>但是，如果显示是这样：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/android-adb-command-failure.png" alt="adb_failure"></p>
+<p>那我们还需要对系统变量进行配置，就像配置jdk那样。</p>
+<p>首先新建一个名叫<code>ANDROID_HOME</code>的系统变量，变量值填你的sdk的路径：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/android-adb-command-home.png" alt="adb_home"></p>
+<p>然后点击系统的<code>Path</code>变量，编辑，在最后添加<code>;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools</code>，记住前面有个英文的分号。</p>
+<p>其实直接在<code>Path</code>里面添加<code>sdk</code>的<code>tools</code>文件夹路径和<code>platform-tools</code>也是可以配置好环境的，但是不推荐那个，推荐新建一个<code>ANDROID_HOME</code>的系统变量呢？因为React Native开发环境必须要<code>ANDROID_HOME</code>系统变量，只能识别这个。如果你以后想搭建React Native开发环境的时候，就不用配置这个了~</p>
+<p>然后点击确定，确定，确定退出。这时候在在命令行工具输入adb就能看到上面第一张图片的那样了。到这就环境配置成功啦！</p>
+<h2 id="命令表"><a href="#命令表" class="headerlink" title="命令表"></a>命令表</h2><p>以下表格是一些常用的命令：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">adb</td>
+<td style="text-align:center">adb是否安装成功？</td>
+</tr>
+<tr>
+<td style="text-align:center">adb install xxx.apk 或 adb install -r xxx.apk</td>
+<td style="text-align:center">安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)</td>
+</tr>
+<tr>
+<td style="text-align:center">adb uninstall xxx.apk 或 adb uninstall -k xxx.apk</td>
+<td style="text-align:center">卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)</td>
+</tr>
+<tr>
+<td style="text-align:center">adb devices</td>
+<td style="text-align:center">查看当前所有连接的模拟器设备</td>
+</tr>
+<tr>
+<td style="text-align:center">adb -s 模拟器编号 命令</td>
+<td style="text-align:center">对某一模拟器操作</td>
+</tr>
+<tr>
+<td style="text-align:center">adb push 文件 模拟器路径</td>
+<td style="text-align:center">导入文件到模拟器 （该命令也可以实现安装APK，只要把APK导入到”/system/app”或者”/data/app”就OK）</td>
+</tr>
+<tr>
+<td style="text-align:center">adb pull 模拟器文件 本地路径</td>
+<td style="text-align:center">从模拟器导出文件</td>
+</tr>
+<tr>
+<td style="text-align:center">adb logcat</td>
+<td style="text-align:center">查看模拟器log信息</td>
+</tr>
+<tr>
+<td style="text-align:center">adb root</td>
+<td style="text-align:center">获取管理员权限</td>
+</tr>
+<tr>
+<td style="text-align:center">adb shell</td>
+<td style="text-align:center">进入shell模式</td>
+</tr>
+<tr>
+<td style="text-align:center">adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）</td>
+<td style="text-align:center">启动activity (adb shell后面跟的命令主要来自源码\system\core\toolbox目录和源码\frameworks\base\cmds目录)</td>
+</tr>
+<tr>
+<td style="text-align:center">adb get-serialno</td>
+<td style="text-align:center">获取设备ID号</td>
+</tr>
+<tr>
+<td style="text-align:center">adb start-server</td>
+<td style="text-align:center">开启adb服务</td>
+</tr>
+<tr>
+<td style="text-align:center">adb kill-server</td>
+<td style="text-align:center">关闭adb服务</td>
+</tr>
+<tr>
+<td style="text-align:center">adb shell sqlite3</td>
+<td style="text-align:center">访问sqlite3</td>
+</tr>
+<tr>
+<td style="text-align:center">adb reboot</td>
+<td style="text-align:center">重启设备</td>
+</tr>
+<tr>
+<td style="text-align:center">adb remount</td>
+<td style="text-align:center">挂在分区(可使系统分区重新可写)</td>
+</tr>
+<tr>
+<td style="text-align:center">adb forward tcp:5555 tcp:8000</td>
+<td style="text-align:center">发布端口（可以设置任意的端口号，做为主机向模拟器或设备的请求端口）</td>
+</tr>
+<tr>
+<td style="text-align:center">adb shell reboot -p</td>
+<td style="text-align:center">关机命令</td>
+</tr>
+</tbody>
+</table>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>不定期更新，敬请关注~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;作为一个Android开发人员，了解常用的adb命令是很必要的。在使用adb命令前，我们先看一下环境有没有配置好。win+R输入cmd打开命令行工具输入adb，如果显示是这样：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://songning.me/categories/Android/"/>
+    
+    
+      <category term="备忘" scheme="http://songning.me/tags/%E5%A4%87%E5%BF%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Google官方MVP框架源码解读</title>
