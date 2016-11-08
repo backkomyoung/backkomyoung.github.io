@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songning.me/"/>
-  <updated>2016-11-08T10:05:41.827Z</updated>
+  <updated>2016-11-08T12:12:27.793Z</updated>
   <id>http://songning.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://songning.me/2016/11/08/android-adb-command/"/>
     <id>http://songning.me/2016/11/08/android-adb-command/</id>
     <published>2016-11-08T09:30:47.000Z</published>
-    <updated>2016-11-08T10:05:41.827Z</updated>
+    <updated>2016-11-08T12:12:27.793Z</updated>
     
     <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>作为一个Android开发人员，了解常用的adb命令是很必要的。在使用adb命令前，我们先看一下环境有没有配置好。win+R输入cmd打开命令行工具输入adb，如果显示是这样：<br><a id="more"></a><br><img src="http://ofp4swv4i.bkt.clouddn.com/android-adb-command-succeed.png" alt="adb_succeed"></p>
 <p>那么恭喜你，你的adb环境已经搭建好。</p>
@@ -30,7 +30,7 @@
 <p>首先新建一个名叫<code>ANDROID_HOME</code>的系统变量，变量值填你的sdk的路径：</p>
 <p><img src="http://ofp4swv4i.bkt.clouddn.com/android-adb-command-home.png" alt="adb_home"></p>
 <p>然后点击系统的<code>Path</code>变量，编辑，在最后添加<code>;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools</code>，记住前面有个英文的分号。</p>
-<p>其实直接在<code>Path</code>里面添加<code>sdk</code>的<code>tools</code>文件夹路径和<code>platform-tools</code>也是可以配置好环境的，但是不推荐那个，推荐新建一个<code>ANDROID_HOME</code>的系统变量呢？因为React Native开发环境必须要<code>ANDROID_HOME</code>系统变量，只能识别这个。如果你以后想搭建React Native开发环境的时候，就不用配置这个了~</p>
+<p>其实直接在<code>Path</code>里面添加<code>sdk</code>的<code>tools</code>文件夹路径和<code>platform-tools</code>也是可以配置好环境的，但是不推荐那个。为什么推荐新建一个<code>ANDROID_HOME</code>的系统变量呢？因为一个是方便以后换SDK的路径，另一个是React Native开发环境必须要<code>ANDROID_HOME</code>系统变量，只能识别这个。如果你以后想搭建React Native开发环境的时候，就不用配置这个了~</p>
 <p>然后点击确定，确定，确定退出。这时候在在命令行工具输入adb就能看到上面第一张图片的那样了。到这就环境配置成功啦！</p>
 <h2 id="命令表"><a href="#命令表" class="headerlink" title="命令表"></a>命令表</h2><p>以下表格是一些常用的命令：</p>
 <table>
