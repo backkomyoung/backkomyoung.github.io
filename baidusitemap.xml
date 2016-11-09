@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
+    <lastmod>2016-11-09T07:46:19.316Z</lastmod>
+    <data>
+        <display>
+        <title>Activity的四种启动模式</title>
+        <pubTime>2016-10-28T13:06:30.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>面试</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://songning.me/2016/11/08/android-adb-command/</loc>
     <lastmod>2016-11-08T12:12:27.793Z</lastmod>
     <data>
@@ -59,28 +81,6 @@
            
              
               <breadCrumb title="Java" url="http://songning.me/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
-    <lastmod>2016-10-29T03:37:16.520Z</lastmod>
-    <data>
-        <display>
-        <title>Activity的四种启动模式</title>
-        <pubTime>2016-10-28T13:06:30.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>面试</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
           
         </display>
     </data>

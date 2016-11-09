@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
+    
+    <lastmod>2016-11-09T07:46:19.316Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://songning.me/2016/11/08/android-adb-command/</loc>
     
     <lastmod>2016-11-08T12:12:27.793Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://songning.me/2016/10/29/singleton-pattern/</loc>
     
     <lastmod>2016-10-30T07:11:25.782Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
-    
-    <lastmod>2016-10-29T03:37:16.520Z</lastmod>
     
   </url>
   
