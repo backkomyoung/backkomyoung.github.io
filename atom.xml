@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songning.me/"/>
-  <updated>2016-11-10T02:46:43.515Z</updated>
+  <updated>2016-11-10T03:11:42.091Z</updated>
   <id>http://songning.me/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://songning.me/2016/11/09/mvp-rxjava-retrofit/"/>
     <id>http://songning.me/2016/11/09/mvp-rxjava-retrofit/</id>
     <published>2016-11-09T08:34:09.000Z</published>
-    <updated>2016-11-10T02:46:43.515Z</updated>
+    <updated>2016-11-10T03:11:42.091Z</updated>
     
     <content type="html"><![CDATA[<p>前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，让这个框架更加实用，同时简化操作，少写代码。果然程序员都是喜欢偷懒的- -<a id="more"></a></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，阅读本篇文章前，建议你先去了解一下MVP这个设计模式。当然，也可以先看看我前面的文章^_^ <a href="http://songning.me/2016/11/03/google-rxjava-mvp/">传送门</a></p>
 <p>另外，还用到了<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a>、<a href="https://github.com/square/retrofit" target="_blank" rel="external">Retrofit</a>、<a href="https://github.com/square/okhttp" target="_blank" rel="external">Okhttp</a>。如果你已经了解了他们的基本用法，请直接忽略这段，接着往下看~</p>
 <p>不想看长长的文章的，可以直接看代码。代码地址已经上传到Github，<a href="https://github.com/backkomyoung/MVP" target="_blank" rel="external">传送门。</a></p>
-<h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>按照惯例，先开看看工程的主要结构：</p>
+<h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>按照惯例，先看看工程的主要结构：</p>
 <p><img src="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit-package.png" alt="project"></p>
 <p>简单说一下几个主要包下的功能。首先是api包，这是存放对Retrofit进行包装的类。Base包当然是放各种Base类啦~ mvp包是将契约类Contract、Model的实现类和Presenter的实现类放一起，方便管理。其实你也可以按功能分包，个人喜好吧。ui包放一些界面的类，如Activity和Fragment。</p>
 <p>下面正式开始~</p>
