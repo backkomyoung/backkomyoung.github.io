@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://songning.me/2016/11/09/mvp-rxjava-retrofit/</loc>
+    <lastmod>2016-11-10T02:38:09.565Z</lastmod>
+    <data>
+        <display>
+        <title>优雅的使用MVP+RxJava+Retrofit框架</title>
+        <pubTime>2016-11-09T08:34:09.000Z</pubTime>
+        
+        <tag>MVP</tag>
+         
+        <tag>RxJava</tag>
+         
+        <tag>Retrofit</tag>
+         
+        <tag>框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://songning.me/2016/10/28/activity-launch-mode/</loc>
     <lastmod>2016-11-09T07:46:19.316Z</lastmod>
     <data>
