@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://songning.me/2016/11/09/mvp-rxjava-retrofit/</loc>
-    <lastmod>2016-11-10T07:37:13.637Z</lastmod>
+    <lastmod>2016-11-10T08:03:11.120Z</lastmod>
     <data>
         <display>
         <title>优雅的使用MVP+RxJava+Retrofit框架</title>
@@ -18,6 +18,26 @@
         <tag>Retrofit</tag>
          
         <tag>框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
+    <lastmod>2016-11-10T08:00:06.630Z</lastmod>
+    <data>
+        <display>
+        <title>Google官方MVP框架源码解读</title>
+        <pubTime>2016-11-03T07:54:41.000Z</pubTime>
+        
+        <tag>MVP</tag>
          
          
            
@@ -60,26 +80,6 @@
         <pubTime>2016-11-08T09:30:47.000Z</pubTime>
         
         <tag>备忘</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://songning.me/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
-    <lastmod>2016-11-05T06:17:56.640Z</lastmod>
-    <data>
-        <display>
-        <title>Google官方MVP框架源码解读</title>
-        <pubTime>2016-11-03T07:54:41.000Z</pubTime>
-        
-        <tag>MVP</tag>
          
          
            

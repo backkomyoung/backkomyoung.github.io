@@ -86,18 +86,19 @@
 
 
 
-<meta name="description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼。于是就对其分析了一下。Google的MVP版本很多，不过思想都一样，所以就拿">
+<meta name="description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼，上图为Demo的框架图。于是就对其分析了一下。Google的MVP版本很多，不过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google官方MVP框架源码解读">
 <meta property="og:url" content="http://songning.me/2016/11/03/google-rxjava-mvp/index.html">
 <meta property="og:site_name" content="Song Ning's">
-<meta property="og:description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼。于是就对其分析了一下。Google的MVP版本很多，不过思想都一样，所以就拿">
+<meta property="og:description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼，上图为Demo的框架图。于是就对其分析了一下。Google的MVP版本很多，不过">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp.png">
 <meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp-main.png">
-<meta property="og:updated_time" content="2016-11-05T06:17:56.640Z">
+<meta property="og:updated_time" content="2016-11-10T08:00:06.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google官方MVP框架源码解读">
-<meta name="twitter:description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼。于是就对其分析了一下。Google的MVP版本很多，不过思想都一样，所以就拿">
-<meta name="twitter:image" content="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp-main.png">
+<meta name="twitter:description" content="最近在看关于MVP框架的封装，于是网上搜了一下，发现了谷歌官方的MVP Demo，发现还是Google的看着顺眼，上图为Demo的框架图。于是就对其分析了一下。Google的MVP版本很多，不过">
+<meta name="twitter:image" content="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp.png">
 
 
 
@@ -340,7 +341,8 @@
       
 
       
-        <p>最近在看关于MVP框架的封装，于是网上搜了一下，发现了<a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">谷歌官方的MVP Demo</a>，发现还是Google的看着顺眼。于是就对其分析了一下。Google的MVP版本很多，不过思想都一样，所以就拿<a id="more"></a>当前较火的RxJava那个MVP版本进行分析。</p>
+        <p><img src="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp.png" alt="mvp"></p>
+<p>最近在看关于MVP框架的封装，于是网上搜了一下，发现了<a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">谷歌官方的MVP Demo</a>，发现还是Google的看着顺眼，上图为Demo的框架图。于是就对其分析了一下。Google的MVP版本很多，不过<a id="more"></a>思想都一样，所以就拿当前较火的RxJava那个MVP版本进行分析。</p>
 <h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>首先我们来看一下整个工程里面的包的结构：</p>
 <p><img src="http://ofp4swv4i.bkt.clouddn.com/google-rxjava-mvp-main.png" alt="工程结构"></p>
 <p>整个工程结构不难，除了data层是处理数据外，其他都是按功能分模块。</p>

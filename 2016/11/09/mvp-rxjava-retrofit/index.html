@@ -86,19 +86,20 @@
 
 
 
-<meta name="description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，让这个框架更加实用，同时简化操作，少写代码。果然程序员都是喜欢偷懒的- -">
+<meta name="description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，稍微变化一下，见上图。目的是让这个框架更加实用，同时简化操作，少写代码。果然程序员">
 <meta property="og:type" content="article">
 <meta property="og:title" content="优雅的使用MVP+RxJava+Retrofit框架">
 <meta property="og:url" content="http://songning.me/2016/11/09/mvp-rxjava-retrofit/index.html">
 <meta property="og:site_name" content="Song Ning's">
-<meta property="og:description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，让这个框架更加实用，同时简化操作，少写代码。果然程序员都是喜欢偷懒的- -">
+<meta property="og:description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，稍微变化一下，见上图。目的是让这个框架更加实用，同时简化操作，少写代码。果然程序员">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit.png">
 <meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit-package.png">
 <meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit-gif.gif">
-<meta property="og:updated_time" content="2016-11-10T07:37:13.637Z">
+<meta property="og:updated_time" content="2016-11-10T08:03:11.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优雅的使用MVP+RxJava+Retrofit框架">
-<meta name="twitter:description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，让这个框架更加实用，同时简化操作，少写代码。果然程序员都是喜欢偷懒的- -">
-<meta name="twitter:image" content="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit-package.png">
+<meta name="twitter:description" content="前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，稍微变化一下，见上图。目的是让这个框架更加实用，同时简化操作，少写代码。果然程序员">
+<meta name="twitter:image" content="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit.png">
 
 
 
@@ -341,7 +342,8 @@
       
 
       
-        <p>前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，让这个框架更加实用，同时简化操作，少写代码。果然程序员都是喜欢偷懒的- -<a id="more"></a></p>
+        <p><img src="http://ofp4swv4i.bkt.clouddn.com/mvp-rxjava-retrofit.png" alt="mvp"></p>
+<p>前面我已经写过一篇关于Google的RxJava版MVP解读的文章，本篇就是我在此基础上进行了修改和封装，稍微变化一下，见上图。目的是让这个框架更加实用，同时简化操作，少写代码。果然程序员<a id="more"></a>都是喜欢偷懒的- -</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先，阅读本篇文章前，建议你先去了解一下MVP这个设计模式。当然，也可以先看看我前面的文章^_^ <a href="http://songning.me/2016/11/03/google-rxjava-mvp/">传送门</a></p>
 <p>另外，还用到了<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a>、<a href="https://github.com/square/retrofit" target="_blank" rel="external">Retrofit</a>、<a href="https://github.com/square/okhttp" target="_blank" rel="external">Okhttp</a>。如果你已经了解了他们的基本用法，请直接忽略这段，接着往下看~</p>
 <p>不想看长长的文章的，可以直接看代码。代码地址已经上传到Github，<a href="https://github.com/backkomyoung/MVP" target="_blank" rel="external">传送门。</a></p>
