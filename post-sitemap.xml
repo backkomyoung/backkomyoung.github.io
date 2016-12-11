@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://songning.me/2016/11/09/mvp-rxjava-retrofit/</loc>
-        <lastmod>2016-11-10T03:11:42.091Z</lastmod>
+        <lastmod>2016-11-10T08:03:11.120Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
+        <lastmod>2016-11-10T08:00:06.630Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,14 +33,6 @@
     <url>
         <loc>http://songning.me/2016/11/08/android-adb-command/</loc>
         <lastmod>2016-11-08T12:12:27.793Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://songning.me/2016/11/03/google-rxjava-mvp/</loc>
-        <lastmod>2016-11-05T06:17:56.640Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
