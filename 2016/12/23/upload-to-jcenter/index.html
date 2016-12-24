@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="JCenter,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Song Ning's" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：
+
+compile ‘com.android.support:appcompat-v7:25.1.0’
+
+这看起来是一件很酷的事情，其实也不难。将你的项目上传Maven，然后发布到JCenter即可。下面我们来看看详细过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一步一步教你在JCenter发布开源库">
+<meta property="og:url" content="http://songning.me/2016/12/23/upload-to-jcenter/index.html">
+<meta property="og:site_name" content="Song Ning's">
+<meta property="og:description" content="当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：
+
+compile ‘com.android.support:appcompat-v7:25.1.0’
+
+这看起来是一件很酷的事情，其实也不难。将你的项目上传Maven，然后发布到JCenter即可。下面我们来看看详细过程。">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register2.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create1.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_gradle.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_user.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_edit.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_key.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_loading.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_build_succeed.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_bintrayUpload.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_upload.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_maven.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_jcenter.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_send.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_approved.png">
+<meta property="og:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_upload_fail.png">
+<meta property="og:updated_time" content="2016-12-24T08:04:38.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一步一步教你在JCenter发布开源库">
+<meta name="twitter:description" content="当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：
+
+compile ‘com.android.support:appcompat-v7:25.1.0’
+
+这看起来是一件很酷的事情，其实也不难。将你的项目上传Maven，然后发布到JCenter即可。下面我们来看看详细过程。">
+<meta name="twitter:image" content="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6345965349896209000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 一步一步教你在JCenter发布开源库 | Song Ning's </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1cd312fd0c2a9689d27c66d7b6ad3bab";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Song Ning's</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">有限的青春，无限的代码。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一步一步教你在JCenter发布开源库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-23T12:35:42+08:00" content="2016-12-23">
+              2016-12-23
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/23/upload-to-jcenter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/upload-to-jcenter/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/23/upload-to-jcenter/" class="leancloud_visitors" data-flag-title="一步一步教你在JCenter发布开源库">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：</p>
+<blockquote>
+<p>compile ‘com.android.support:appcompat-v7:25.1.0’</p>
+</blockquote>
+<p>这看起来是一件很酷的事情，其实也不难。将你的项目上传Maven，然后发布到JCenter即可。下面我们来看看详细过程。<a id="more"></a></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先你要写好一个开源项目。嗯，不用我说你也知道。</p>
+<h3 id="注册Bintray"><a href="#注册Bintray" class="headerlink" title="注册Bintray"></a>注册Bintray</h3><p>说到注册，大家第一时间肯定是想到去<a href="https://bintray.com/" target="_blank" rel="external">官网</a>注册：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png" alt="register1"></p>
+<p>但是，现在官网首页的注册入口已经变成组织的注册了，并不是个人注册。所以我们要去个人注册入口：</p>
+<blockquote>
+<p>传送门：<a href="https://bintray.com/signup/oss" target="_blank" rel="external">https://bintray.com/signup/oss</a></p>
+</blockquote>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register2.png" alt="register2"></p>
+<p>在上面这个页面注册就对了。也可以用第三方登录，我是直接用Github登录（好像其它两个在我国也登录不了），省事。</p>
+<h3 id="创建一个Maven仓库"><a href="#创建一个Maven仓库" class="headerlink" title="创建一个Maven仓库"></a>创建一个Maven仓库</h3><p>注册完登录进去后，点击“Add New Repository”，新建仓库：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create.png" alt="create"></p>
+<p>接下来，我们会看到这么一个界面：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create1.png" alt="create1"></p>
+<p>Name填maven，Type选Maven，Default Licenses选Apache-2.0，Description是描述，随便填，点击Create。然后回到主页就会在刚刚的“Add New Repository”下面就会多了一个叫maven的仓库。</p>
+<h3 id="配置build-gradle"><a href="#配置build-gradle" class="headerlink" title="配置build.gradle"></a>配置build.gradle</h3><p>在你Project的build.gradle文件中加入Maven和Jfrog Bintray的依赖插件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.2.3'</span></div><div class="line">        <span class="comment">//下面这两句</span></div><div class="line">        classpath <span class="string">'com.github.dcendents:android-maven-gradle-plugin:1.5'</span></div><div class="line">        classpath <span class="string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'</span></div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</div><div class="line">    delete rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你不一定要和我用同样版本的插件，说不定你用的时候就不是这个版本了。建议去Github上看看最新的版本：</p>
+<blockquote>
+<p>Maven：<a href="https://github.com/dcendents/android-maven-gradle-plugin" target="_blank" rel="external">https://github.com/dcendents/android-maven-gradle-plugin</a><br>Jfrog Bintray：<a href="https://github.com/bintray/gradle-bintray-plugin" target="_blank" rel="external">https://github.com/bintray/gradle-bintray-plugin</a></p>
+</blockquote>
+<p>然后在library的build.gradle文件中进行配置，这里以我的开源控件<a href="https://github.com/backkomyoung/CircleView" target="_blank" rel="external">CircleView</a>为例：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_gradle.png" alt="gradle"></p>
+<p>整个build.gradle文件如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.library'</span></div><div class="line"><span class="comment">//添加这两行</span></div><div class="line">apply plugin: <span class="string">'com.github.dcendents.android-maven'</span></div><div class="line">apply plugin: <span class="string">'com.jfrog.bintray'</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">25</span></div><div class="line">    buildToolsVersion <span class="string">"25.0.0"</span></div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line">        minSdkVersion <span class="number">14</span></div><div class="line">        targetSdkVersion <span class="number">25</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line"></div><div class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span></div><div class="line"></div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            <span class="function">minifyEnabled <span class="keyword">false</span></span></div><div class="line">            proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>, 'proguard-rules.pro'</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span></div><div class="line">    <span class="title">androidTestCompile</span><span class="params">(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, &#123;</span></div><div class="line">        exclude group: <span class="string">'com.android.support'</span>, <span class="keyword">module</span>: <span class="string">'support-annotations'</span></div><div class="line">    &#125;)</div><div class="line">    compile 'com.android.support:appcompat-v7:25.1.0'</div><div class="line">    testCompile 'junit:junit:4.12'</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//项目主页</span></div><div class="line">def siteUrl = <span class="string">'https://github.com/backkomyoung/CircleView'</span></div><div class="line"><span class="comment">//项目的git地址</span></div><div class="line">def gitUrl = <span class="string">'https://github.com/backkomyoung/CircleView.git'</span></div><div class="line"><span class="comment">//发布到JCenter上的项目名字</span></div><div class="line">def libName = <span class="string">"CircleView"</span></div><div class="line"></div><div class="line"><span class="comment">//发布到组织名称名字，必须填写</span></div><div class="line">group = <span class="string">"me.songning.CircleView"</span></div><div class="line"><span class="comment">// 版本号，下次更新是只需要更改版本号即可</span></div><div class="line">version = <span class="string">"1.0.0"</span></div><div class="line"><span class="comment">//上面配置后上传至JCenter后的编译路径是这样的： compile 'me.songning.CircleView:library:1.0.0'</span></div><div class="line"></div><div class="line"><span class="comment">//生成源文件</span></div><div class="line"><span class="function">task <span class="title">sourcesJar</span><span class="params">(type: Jar)</span> </span>&#123;</div><div class="line">    from android.sourceSets.main.java.srcDirs</div><div class="line">    classifier = <span class="string">'sources'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//生成Javadoc文档</span></div><div class="line"><span class="function">task <span class="title">javadoc</span><span class="params">(type: Javadoc)</span> </span>&#123;</div><div class="line">    source = android.sourceSets.main.java.srcDirs</div><div class="line">    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//文档打包成jar</span></div><div class="line"><span class="function">task <span class="title">javadocJar</span><span class="params">(type: Jar, dependsOn: javadoc)</span> </span>&#123;</div><div class="line">    classifier = <span class="string">'javadoc'</span></div><div class="line">    from javadoc.destinationDir</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//拷贝javadoc文件</span></div><div class="line"><span class="function">task <span class="title">copyDoc</span><span class="params">(type: Copy)</span> </span>&#123;</div><div class="line">    from <span class="string">"$&#123;buildDir&#125;/docs/"</span></div><div class="line">    into <span class="string">"docs"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//上传到JCenter所需要的源码文件</span></div><div class="line">artifacts &#123;</div><div class="line">    archives javadocJar</div><div class="line">    archives sourcesJar</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 配置maven库，生成POM.xml文件</span></div><div class="line">install &#123;</div><div class="line">    repositories.mavenInstaller &#123;</div><div class="line">        <span class="comment">// This generates POM.xml with proper parameters</span></div><div class="line">        pom &#123;</div><div class="line">            project &#123;</div><div class="line">                packaging <span class="string">'aar'</span></div><div class="line">                <span class="comment">//项目描述，随意填</span></div><div class="line">                name <span class="string">'A colorful circle view with text.'</span></div><div class="line">                url siteUrl</div><div class="line">                licenses &#123;</div><div class="line">                    license &#123;</div><div class="line">                        <span class="comment">//开源协议</span></div><div class="line">                        name <span class="string">'The Apache Software License, Version 2.0'</span></div><div class="line">                        url <span class="string">'http://www.apache.org/licenses/LICENSE-2.0.txt'</span></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                developers &#123;</div><div class="line">                    developer &#123;</div><div class="line">                        <span class="comment">//开发者的个人信息</span></div><div class="line">                        id <span class="string">'backkomyoung'</span></div><div class="line">                        name <span class="string">'SongNing'</span></div><div class="line">                        email <span class="string">'backkomyoung@gmail.com'</span></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                scm &#123;</div><div class="line">                    connection gitUrl</div><div class="line">                    developerConnection gitUrl</div><div class="line">                    url siteUrl</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//上传到JCenter</span></div><div class="line">Properties properties = <span class="keyword">new</span> Properties()</div><div class="line">properties.load(project.rootProject.file(<span class="string">'local.properties'</span>).newDataInputStream())</div><div class="line"></div><div class="line">bintray &#123;</div><div class="line">    user = properties.getProperty(<span class="string">"bintray.user"</span>)    <span class="comment">//读取 local.properties 文件里面的 bintray.user</span></div><div class="line">    key = properties.getProperty(<span class="string">"bintray.apikey"</span>)   <span class="comment">//读取 local.properties 文件里面的 bintray.apikey</span></div><div class="line">    configurations = [<span class="string">'archives'</span>]</div><div class="line">    pkg &#123;</div><div class="line">        <span class="comment">//这里的repo值必须要和你创建Maven仓库的时候的名字一样</span></div><div class="line">        repo = <span class="string">"maven"</span></div><div class="line">        <span class="comment">//发布到JCenter上的项目名字</span></div><div class="line">        name = libName</div><div class="line">        <span class="comment">//项目描述</span></div><div class="line">        desc = <span class="string">'A colorful circle view with text.'</span></div><div class="line">        websiteUrl = siteUrl</div><div class="line">        vcsUrl = gitUrl</div><div class="line">        licenses = [<span class="string">"Apache-2.0"</span>]</div><div class="line">        publish = <span class="keyword">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">javadoc &#123;</div><div class="line">    options&#123;</div><div class="line">        <span class="comment">//如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码</span></div><div class="line">        encoding <span class="string">"UTF-8"</span></div><div class="line">        charSet <span class="string">'UTF-8'</span></div><div class="line">        author <span class="keyword">true</span></div><div class="line">        version <span class="keyword">true</span></div><div class="line">        links <span class="string">"http://docs.oracle.com/javase/7/docs/api"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除此外，还要将user和key写到local.properties文件中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sdk.dir=E\:\\Android\\Sdk</div><div class="line"><span class="comment">//uer和key</span></div><div class="line">bintray.user=username</div><div class="line">bintray.apikey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div></pre></td></tr></table></figure>
+<p>user即为你的账号：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_user.png" alt="user"></p>
+<p>key的话点击修改信息：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_edit.png" alt="edit"></p>
+<p>选择左边的“API key”，然后复制key：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_key.png" alt="key"></p>
+<p>把user和key填到上面的local.properties文件中就ok啦。准备工作到这里算是完成了。</p>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>打开Android Studio底部工具栏的Terminal窗口，输入命令：</p>
+<blockquote>
+<p>gradlew install</p>
+</blockquote>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_loading.png" alt="build"></p>
+<p>漫长的等待…可能是我的网络问题，吃了个饭回来才弄好。</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_build_succeed.png" alt="succeed"></p>
+<p>显示“BUILD SUCCESSFUL”即表示成功。</p>
+<p>到这里已经成功一半了，只差上传到Bintray了。然后我们接着在Terminal窗口输入命令：</p>
+<blockquote>
+<p>gradle bintrayUpload</p>
+</blockquote>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_bintrayUpload.png" alt="bintrayUpload"></p>
+<p>这个很快就好~</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_upload.png" alt="upload"></p>
+<p>同样，显示“BUILD SUCCESSFUL”即表示成功。</p>
+<h2 id="发布到JCenter"><a href="#发布到JCenter" class="headerlink" title="发布到JCenter"></a>发布到JCenter</h2><p>这时候打开我们创建的maven仓库，就会在里面发现已经成功将项目上传到仓库里。</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_maven.png" alt="maven"></p>
+<p>点击我们的项目名，进入详情：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_jcenter.png" alt="jcenter"></p>
+<p>点击“Add to JCenter”后：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_send.png" alt="send"></p>
+<p>直接点Send就行了。因为时差的关系，接下来就是漫长的等待审核了。</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_approved.png" alt="approved"></p>
+<p>经过几个小时，在Bintray的网站上会有提示审核通过。这时候，就可以在Android Studio上通过compile的方式使用了。</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>说说我遇到的问题，就是执行上传命令的时候，显示这个错误：</p>
+<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_upload_fail.png" alt="fail"></p>
+<p>提示找不到“maven”，原因是我当时还没创建Maven仓库就执行上传命令，创建后再执行一遍命令就成功了。还有就是创建的Maven仓库的名字一定要和build.gradle文件里面的repo值一致。我就遇到这一个问题。</p>
+<p>如果你们遇到其他的问题，建议看看这篇：</p>
+<blockquote>
+<p><a href="http://www.jianshu.com/p/c518a10fdaed" target="_blank" rel="external">Android 发布项目到 JCenter 遇到的各种坑</a></p>
+</blockquote>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>到这里就把整个开源库发布到JCenter的流程写完了，有什么问题可以在下面留言~</p>
+<blockquote>
+<p>参考文章<br><a href="http://blog.csdn.net/mchaoliu/article/details/51984486" target="_blank" rel="external">android 将开源项目发布到JCenter及问题总结</a><br><a href="http://blog.csdn.net/yyh352091626/article/details/51901562" target="_blank" rel="external">利用Gradle发布项目到JCenter、Maven</a><br><a href="https://gold.xitu.io/post/5858cc37570c35006916b718" target="_blank" rel="external">新版Bintray-极简上传Library到JCenter</a></p>
+</blockquote>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="SongNing WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="SongNing Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JCenter/" rel="tag">#JCenter</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/circle-view/" rel="next" title="自定义View，从画个圆写个字开始">
+                <i class="fa fa-chevron-left"></i> 自定义View，从画个圆写个字开始
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/23/upload-to-jcenter/" data-title="一步一步教你在JCenter发布开源库" data-url="http://songning.me/2016/12/23/upload-to-jcenter/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="SongNing">
+          <p class="site-author-name" itemprop="name">SongNing</p>
+          <p class="site-description motion-element" itemprop="description">backkomyoung@gmail.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/backkomyoung" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/920111209" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册Bintray"><span class="nav-number">1.1.</span> <span class="nav-text">注册Bintray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个Maven仓库"><span class="nav-number">1.2.</span> <span class="nav-text">创建一个Maven仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置build-gradle"><span class="nav-number">1.3.</span> <span class="nav-text">配置build.gradle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行命令"><span class="nav-number">2.</span> <span class="nav-text">执行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布到JCenter"><span class="nav-number">3.</span> <span class="nav-text">发布到JCenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">4.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongNing</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"backkomyoung"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("ykSLJchyyu5cqA5fnCLKqz8h-gzGzoHsz", "vdpXskmK56ELHIl6qXlP35S5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
