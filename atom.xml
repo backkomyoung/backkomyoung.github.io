@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songning.me/"/>
-  <updated>2016-12-24T08:45:06.731Z</updated>
+  <updated>2016-12-24T09:06:17.100Z</updated>
   <id>http://songning.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://songning.me/2016/12/23/upload-to-jcenter/"/>
     <id>http://songning.me/2016/12/23/upload-to-jcenter/</id>
     <published>2016-12-23T04:35:42.000Z</published>
-    <updated>2016-12-24T08:45:06.731Z</updated>
+    <updated>2016-12-24T09:06:17.100Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png" alt="register1"></p>
 <p>当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：</p>
@@ -39,7 +39,7 @@
 <p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create.png" alt="create"></p>
 <p>接下来，我们会看到这么一个界面：</p>
 <p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_create1.png" alt="create1"></p>
-<p>Name填maven，Type选Maven，Default Licenses选Apache-2.0，Description是描述，随便填，点击Create。然后回到主页就会在刚刚的“Add New Repository”下面就会多了一个叫maven的仓库。</p>
+<p>Name填maven，Type选Maven，Default Licenses选Apache-2.0，Description是描述，随便填，点击Create。然后回到主页就会在刚刚“Add New Repository”下面多了一个叫maven的仓库。</p>
 <h3 id="配置build-gradle"><a href="#配置build-gradle" class="headerlink" title="配置build.gradle"></a>配置build.gradle</h3><p>在你Project的build.gradle文件中加入Maven和Jfrog Bintray的依赖插件：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.2.3'</span></div><div class="line">        <span class="comment">//下面这两句</span></div><div class="line">        classpath <span class="string">'com.github.dcendents:android-maven-gradle-plugin:1.5'</span></div><div class="line">        classpath <span class="string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'</span></div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></div><div class="line">        <span class="comment">// in the individual module build.gradle files</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</div><div class="line">    delete rootProject.buildDir</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>你不一定要和我用同样版本的插件，说不定你用的时候就不是这个版本了。建议去Github上看看最新的版本：</p>
