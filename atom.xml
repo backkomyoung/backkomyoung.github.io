@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://songning.me/"/>
-  <updated>2016-12-24T08:04:38.105Z</updated>
+  <updated>2016-12-24T08:45:06.731Z</updated>
   <id>http://songning.me/</id>
   
   <author>
@@ -20,17 +20,16 @@
     <link href="http://songning.me/2016/12/23/upload-to-jcenter/"/>
     <id>http://songning.me/2016/12/23/upload-to-jcenter/</id>
     <published>2016-12-23T04:35:42.000Z</published>
-    <updated>2016-12-24T08:04:38.105Z</updated>
+    <updated>2016-12-24T08:45:06.731Z</updated>
     
-    <content type="html"><![CDATA[<p>当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：</p>
+    <content type="html"><![CDATA[<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png" alt="register1"></p>
+<p>当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：</p>
 <blockquote>
 <p>compile ‘com.android.support:appcompat-v7:25.1.0’</p>
 </blockquote>
 <p>这看起来是一件很酷的事情，其实也不难。将你的项目上传Maven，然后发布到JCenter即可。下面我们来看看详细过程。<a id="more"></a></p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先你要写好一个开源项目。嗯，不用我说你也知道。</p>
-<h3 id="注册Bintray"><a href="#注册Bintray" class="headerlink" title="注册Bintray"></a>注册Bintray</h3><p>说到注册，大家第一时间肯定是想到去<a href="https://bintray.com/" target="_blank" rel="external">官网</a>注册：</p>
-<p><img src="http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png" alt="register1"></p>
-<p>但是，现在官网首页的注册入口已经变成组织的注册了，并不是个人注册。所以我们要去个人注册入口：</p>
+<h3 id="注册Bintray"><a href="#注册Bintray" class="headerlink" title="注册Bintray"></a>注册Bintray</h3><p>说到注册，大家第一时间肯定是想到去<a href="https://bintray.com/" target="_blank" rel="external">官网</a>注册。但是，现在官网首页的注册入口（上面第一张图）已经变成组织的注册了，并不是个人注册。所以我们要去个人注册入口：</p>
 <blockquote>
 <p>传送门：<a href="https://bintray.com/signup/oss" target="_blank" rel="external">https://bintray.com/signup/oss</a></p>
 </blockquote>
@@ -99,7 +98,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;http://ofp4swv4i.bkt.clouddn.com/upload_to_jcenter_register1.png&quot; alt=&quot;register1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当你写好了一个开源库，是否也想像其他的开源库一样在Android Studio中一句compile就可以引用。比如：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;compile ‘com.android.support:appcompat-v7:25.1.0’&lt;/p&gt;
 &lt;/blockquote&gt;
